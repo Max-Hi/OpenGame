@@ -12,7 +12,7 @@ model = {
     "haiku": "claude-3-haiku-20240307",
 }
 
-def generate_text(prompt, model=model["haiku"], max_tokens=100):
+def generate_text(prompt: str, model: str = model["haiku"], max_tokens: int = 100) -> str:
     llm = ChatAnthropic(anthropic_api_key = os.getenv('ANTHROPIC_API_KEY'), model=model, temperature=0.2, max_tokens=max_tokens)
     # template = PromptTemplate(input_variables=["prompt"], template="{prompt}")
     template = ChatPromptTemplate.from_messages([
@@ -26,7 +26,8 @@ def generate_text(prompt, model=model["haiku"], max_tokens=100):
     response = chain.invoke({
                     "prompt": prompt,
                     })
-    return response
+    # response.metadata, response.id and response.usage_metadata might be interesting in the future. 
+    return response.content 
 
 
 

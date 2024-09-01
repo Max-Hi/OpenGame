@@ -1,0 +1,7 @@
+# os stuff
+os
+dotenv == 1.0.1
+
+# langchain stuff
+langchain_core == 0.2.37
+langchain_anthropic == 0.1.23
